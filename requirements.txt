@@ -1,0 +1,8 @@
+numpy==1.26.0
+pandas==2.2.2
+Pillow==10.4.0
+plotly==5.23.0
+pyhid_usb_relay==1.2.0
+pytz==2024.1
+sounddevice==0.5.0
+streamlit==1.37.1
