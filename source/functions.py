@@ -9,6 +9,7 @@
 """
 
 import asyncio
+import os
 import subprocess
 import time
 from datetime import datetime
@@ -1556,9 +1557,12 @@ def run_git_pull(verbose=False):
 
 
 def run_pip_install(verbose=False):
+    python_path = os.path.join('..', 'env', 'Scripts', 'python')  # Windows
+    # python_path = os.path.join('..', 'env', 'bin', 'python')  # Linux/MacOS
+
     try:
         result = subprocess.run(
-            ['python', '-m', 'pip', 'install', '-r', 'requirements.txt'],
+            [python_path, '-m', 'pip', 'install', '-r', 'requirements.txt'],
             capture_output=True, text=True, check=True)
         if verbose:
             st.sidebar.success(f'Requirements update successful:\n{result.stdout}')
