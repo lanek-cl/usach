@@ -33,5 +33,5 @@ verbose = st.sidebar.toggle('Verbose', False)
 
 if st.sidebar.button('Buscar actualizaciones'):
     update = run_git_pull(verbose)
-    if update:
-        reqs = run_pip_install(verbose)
+    #if update:
+    #    reqs = run_pip_install(verbose)
