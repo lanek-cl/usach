@@ -2,7 +2,7 @@
 setlocal
 
 REM Define variables
-set REPO_URL=git@github.com:lanek-cl/usach.git
+set REPO_URL=https://github.com/lanek-cl/usach.git
 set REPO_DIR=%USERPROFILE%\usach-repo
 
 REM Clone or pull the repository
