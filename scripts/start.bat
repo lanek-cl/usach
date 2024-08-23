@@ -11,7 +11,8 @@ if not exist "%ENV_PATH%" (
     echo Activating virtual environment...
     call "%ENV_PATH%\Scripts\activate"
     echo Inatalling requirements...
-    pip install -r requirements.txt
+    pip install uv
+    uv pip install -r requirements.txt
     echo Deactivating virtual environment...
     deactivate
 )
