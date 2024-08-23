@@ -4,18 +4,9 @@ REM Set the path to the Python script and the environment folder
 set SCRIPT_PATH=run.py
 set ENV_PATH=env
 
-REM Check if the environment folder exists
-if not exist "%ENV_PATH%" (
-    echo Virtual environment not found. Creating a new one...
-    python -m venv "%ENV_PATH%"
-    echo Activating virtual environment...
-    call "%ENV_PATH%\Scripts\activate"
-    echo Inatalling requirements...
-    pip install uv
-    uv pip install -r requirements.txt
-    echo Deactivating virtual environment...
-    deactivate
-)
+REM Create venv and install dependencies
+echo Checking virtual environment...
+call scripts/env.bat
 
 REM Activate the virtual environment
 echo Activating virtual environment...
