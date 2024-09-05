@@ -529,6 +529,18 @@ def trigger():
 
     if not st.session_state['no_trigger']:
         relay = pyhid_usb_relay.find()
+        if st.session_state['invert_trigger'] and not st.session_state['banana']:
+            relay.toggle_state(1)
+            relay.toggle_state(2)
+            time.sleep(1)
+            st.session_state['banana'] = True
+        
+        if not st.session_state['invert_trigger'] and st.session_state['banana']:
+            relay.toggle_state(1)
+            relay.toggle_state(2)
+            time.sleep(1)
+            st.session_state['banana'] = False
+        
         relay.toggle_state(1)
         relay.toggle_state(2)
         time.sleep(st.session_state['trigg'] / 1000)
@@ -848,6 +860,10 @@ def set_form():
             )
             st.session_state['no_sound'] = st.toggle('No Sound', False)
             st.session_state['no_trigger'] = st.toggle('No Trigger', False)
+            st.session_state['invert_trigger'] = st.toggle('Invert Trigger', False)
+            if 'banana' not in st.session_state:
+                st.session_state['banana'] = False
+
 
         if not st.session_state['avanzado']:
             reset_session()
